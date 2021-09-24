@@ -14,7 +14,7 @@ describe('demo routes', () => {
     });
   });
 
-  it.only('posts joke to /api/jokes', async() => {
+  it('posts joke to /api/joke', async() => {
     return await request(app)
       .post('/api/joke')
       .send({
@@ -22,7 +22,6 @@ describe('demo routes', () => {
         typeOf: 'single',
         joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' })
       .then(res => {
-        console.log('RESSS', res.body);
         expect(res.body).toEqual({
           id: '1',
           category: 'Programming',
@@ -32,6 +31,25 @@ describe('demo routes', () => {
           joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' });
       });
   });
+
+  it('reads all jokes in /api/joke', async() => {
+    await request(app).post('/api/joke')
+      .send({
+        category: 'Programming',
+        typeOf: 'single',
+        joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' });
+    return await request(app)
+      .get('/api/joke').then(res => {
+        expect(res.body).toEqual({ id: '1',
+          category: 'Programming',
+          typeOf: 'single',
+          setup: null,
+          delivery: null,
+          joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' });
+      });
+  });
+
+
   afterAll(() => {
     pool.end();
   });
