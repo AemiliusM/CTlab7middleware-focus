@@ -14,19 +14,22 @@ describe('demo routes', () => {
     });
   });
 
-  it('posts joke to /api/jokes', async() => {
+  it.only('posts joke to /api/jokes', async() => {
     return await request(app)
       .post('/api/joke')
       .send({
         category: 'Programming',
-        type: 'single',
-        joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\nHe never returned.' })
+        typeOf: 'single',
+        joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' })
       .then(res => {
+        console.log('RESSS', res.body);
         expect(res.body).toEqual({
-          id: 1,
+          id: '1',
           category: 'Programming',
-          type: 'single',
-          joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\nHe never returned.' });
+          typeOf: 'single',
+          setup: null,
+          delivery: null,
+          joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' });
       });
   });
   afterAll(() => {
