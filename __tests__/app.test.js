@@ -14,7 +14,24 @@ describe('demo routes', () => {
     });
   });
 
+  it('posts joke to /api/jokes', async() => {
+    return await request(app)
+      .post('/api/joke')
+      .send({
+        category: 'Programming',
+        type: 'single',
+        joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\nHe never returned.' })
+      .then(res => {
+        expect(res.body).toEqual({
+          id: 1,
+          category: 'Programming',
+          type: 'single',
+          joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\nHe never returned.' });
+      });
+  });
   afterAll(() => {
     pool.end();
   });
 });
+
+
