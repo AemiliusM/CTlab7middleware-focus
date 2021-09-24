@@ -40,12 +40,12 @@ describe('demo routes', () => {
         joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' });
     return await request(app)
       .get('/api/joke').then(res => {
-        expect(res.body).toEqual({ id: '1',
+        expect(res.body).toEqual([{ id: '1',
           category: 'Programming',
           typeOf: 'single',
           setup: null,
           delivery: null,
-          joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' });
+          joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' }]);
       });
   });
 
