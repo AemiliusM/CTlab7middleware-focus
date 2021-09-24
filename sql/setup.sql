@@ -8,3 +8,4 @@ CREATE TABLE jokes (
     delivery VARCHAR(512),
     joke VARCHAR(512)
 )
+
