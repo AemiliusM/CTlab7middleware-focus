@@ -49,6 +49,49 @@ describe('demo routes', () => {
       });
   });
 
+  it('updates a joke by id', async() => {
+    await request(app).post('/api/joke')
+      .send({
+        category: 'Programming',
+        typeOf: 'single',
+        joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' });
+    return await request(app).patch('/api/joke/1')
+      .send({
+        id:'1',
+        category: 'Programming',
+        typeOf: 'single',
+        joke: 'HAHAHAHA'
+      }).then(res => {
+        expect(res.body).toEqual(
+          { id: '1',
+            category: 'Programming',
+            typeOf: 'single',
+            setup: null,
+            delivery: null,
+            joke: 'HAHAHAHA' }
+        );
+      });
+      
+      
+  });
+    
+  it('should delete a joke', async () => {
+    await request(app).post('/api/joke')
+      .send({
+        category: 'Programming',
+        typeOf: 'single',
+        joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' });
+    return request(app).delete('/api/joke/1').then(res => {
+      expect(res.body).toEqual({
+        id: '1',
+        category: 'Programming',
+        typeOf: 'single',
+        setup: null,
+        delivery: null,
+        joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' });
+    });
+  });
+
 
   afterAll(() => {
     pool.end();
