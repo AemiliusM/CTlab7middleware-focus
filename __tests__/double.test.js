@@ -10,24 +10,23 @@ describe('demo routes', () => {
 
   it('gets a random double safe joke from get /', async() => {
     return await request(app).get('/api/doublejokes/random').then(res => {
-      console.log('RES', res.body);
       expect(res.body).toEqual(expect.any(Object));
     });
   });
 
-  //   it('posts joke to /api/doublejokes', async() => {
-  //     return await request(app)
-  //       .post('/api/doublejokes')
-  //       .send({
-  //         category: 'Programming',
-  //         typeOf: 'twopart' })
-  //       .then(res => {
-  //         expect(res.body).toEqual({
-  //           id: '1',
-  //           category: 'Programming',
-  //           typeOf: 'twopart' });
-  //       });
-  //   });
+  it('posts joke to /api/doublejokes', async() => {
+    return await request(app)
+      .post('/api/doublejokes')
+      .send({
+        category: 'Programming',
+        typeOf: 'twopart' })
+      .then(res => {
+        expect(res.body).toEqual({
+          id: '1',
+          category: 'Programming',
+          typeOf: 'twopart' });
+      });
+  });
 
   //   it('reads all jokes in /api/singlejoke', async() => {
   //     await request(app).post('/api/doublejokes')

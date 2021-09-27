@@ -3,7 +3,7 @@ import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
 
-describe.skip('demo routes', () => {
+describe('demo routes', () => {
   beforeEach(() => {
     return setup(pool);
   });
@@ -38,7 +38,7 @@ describe.skip('demo routes', () => {
         typeOf: 'single',
         joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' });
     return await request(app)
-      .get('/api/singlejokes').then(res => {
+      .get('/api/singlejokes/all').then(res => {
         expect(res.body).toEqual([{ id: '1',
           category: 'Programming',
           typeOf: 'single',
