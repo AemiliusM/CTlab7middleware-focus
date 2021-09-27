@@ -10,7 +10,6 @@ describe('demo routes', () => {
 
   it('gets a random single safe joke from get /', async() => {
     return await request(app).get('/api/singlejokes').then(res => {
-      console.log(res.body);
       expect(res.body).toEqual(expect.any(Object));
     });
   });
