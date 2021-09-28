@@ -1,11 +1,12 @@
 DROP TABLE IF EXISTS singlejokes;
 DROP TABLE IF EXISTS doublejokes;
+DROP TABLE IF EXISTS punnyjokes;
 
 CREATE TABLE singlejokes (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     category VARCHAR(512) NOT NULL,
     type_of VARCHAR(512) NOT NULL,
-    joke VARCHAR(512)
+    joke VARCHAR(512),
 );
 
 CREATE TABLE doublejokes (
@@ -13,5 +14,16 @@ CREATE TABLE doublejokes (
     category VARCHAR(512) NOT NULL,
     type_of VARCHAR(512) NOT NULL,
     setup VARCHAR(512) NOT NULL,
-    delivery VARCHAR(512) NOT NULL
+    delivery VARCHAR(512) NOT NULL,
 )
+
+CREATE TABLE punnyjokes (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    category VARCHAR(512) NOT NULL,
+    type_of VARCHAR(512) NOT NULL,
+    setup VARCHAR(512),
+    delivery VARCHAR(512),
+    joke VARCHAR(512),
+
+)
+
