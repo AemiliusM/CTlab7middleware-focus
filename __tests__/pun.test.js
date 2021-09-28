@@ -15,23 +15,23 @@ describe('demo routes', () => {
     });
   });
 
-  //   it('posts joke to /api/doublejokes', async() => {
-  //     return await request(app)
-  //       .post('/api/doublejokes')
-  //       .send({
-  //         category: 'Programming',
-  //         typeOf: 'twopart',
-  //         setup: 'A web developer walks into a restaurant.',
-  //         delivery: 'He immediately leaves in disgust as the restaurant was laid out in tables.' })
-  //       .then(res => {
-  //         expect(res.body).toEqual({
-  //           id: '1',
-  //           category: 'Programming',
-  //           typeOf: 'twopart',
-  //           setup: 'A web developer walks into a restaurant.',
-  //           delivery: 'He immediately leaves in disgust as the restaurant was laid out in tables.' });
-  //       });
-  //   });
+  it('posts a pun to /api/punnyjokes', async() => {
+    return await request(app)
+      .post('/api/punnyjokes')
+      .send({
+        category: 'Pun',
+        type: 'twopart',
+        setup: 'What do you call a witch at the beach?',
+        delivery: 'A Sandwich.', })
+      .then(res => {
+        expect(res.body).toEqual({
+          id: '1',
+          category: 'Pun',
+          type: 'twopart',
+          setup: 'What do you call a witch at the beach?',
+          delivery: 'A Sandwich.' });
+      });
+  });
 
   //   it('reads all jokes in /api/doublejoke', async() => {
   //     await request(app).post('/api/doublejokes')
