@@ -10,7 +10,6 @@ describe('demo routes', () => {
 
   it('gets a random safe pun from get /', async() => {
     return await request(app).get('/api/punnyjokes/random').then(res => {
-      console.log(res.body);
       expect(res.body).toEqual(expect.any(Object));
     });
   });
@@ -20,14 +19,14 @@ describe('demo routes', () => {
       .post('/api/punnyjokes')
       .send({
         category: 'Pun',
-        type: 'twopart',
+        typeOf: 'twopart',
         setup: 'What do you call a witch at the beach?',
         delivery: 'A Sandwich.', })
       .then(res => {
         expect(res.body).toEqual({
           id: '1',
           category: 'Pun',
-          type: 'twopart',
+          typeOf: 'twopart',
           setup: 'What do you call a witch at the beach?',
           delivery: 'A Sandwich.' });
       });
