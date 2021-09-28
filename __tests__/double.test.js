@@ -66,10 +66,10 @@ describe('demo routes', () => {
       }).then(res => {
         expect(res.body).toEqual(
           { id: '1',
-            // category: 'Programming',
-            // typeOf: 'twopart',
-            // setup: 'A web developer team walks into a restaurant.',
-            // delivery: 'They immediately leave in anger as the restaurant could not join tables.' });
+            category: 'Programming',
+            typeOf: 'twopart',
+            setup: 'A web developer team walks into a restaurant.',
+            delivery: 'They immediately leave in anger as the restaurant could not join tables.' });
       });
   });
       
