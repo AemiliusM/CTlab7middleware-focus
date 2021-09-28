@@ -76,17 +76,22 @@ describe('demo routes', () => {
       
   
     
-// it('should delete a joke', async () => {
-//   await request(app).post('/api/doublejokes')
-//     .send({
-//       category: 'Programming',
-//       typeOf: 'twopart' });
-//   return request(app).delete('/api/doublejokes/1').then(res => {
-//     expect(res.body).toEqual({
-//       id: '1',
-//       category: 'Programming',
-//       typeOf: 'twopart' });
-//   });
+  it('should delete a joke', async () => {
+    await request(app).post('/api/doublejokes')
+      .send({
+        category: 'Programming',
+        typeOf: 'twopart',
+        setup: 'A web developer team walks into a restaurant.',
+        delivery: 'They immediately leave in anger as the restaurant could not join tables.' });
+    return request(app).delete('/api/doublejokes/1').then(res => {
+      expect(res.body).toEqual({
+        id: '1',
+        category: 'Programming',
+        typeOf: 'twopart',
+        setup: 'A web developer team walks into a restaurant.',
+        delivery: 'They immediately leave in anger as the restaurant could not join tables.' });
+    });
+  });
 });
 
 
