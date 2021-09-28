@@ -40,7 +40,7 @@ describe('demo routes', () => {
         setup: 'A web developer walks into a restaurant.',
         delivery: 'He immediately leaves in disgust as the restaurant was laid out in tables.' });
     return await request(app)
-      .get('/api/doublejokes/').then(res => {
+      .get('/api/doublejokes/all').then(res => {
         expect(res.body).toEqual([{ id: '1',
           category: 'Programming',
           typeOf: 'twopart',
