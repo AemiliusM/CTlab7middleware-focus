@@ -9,7 +9,7 @@ describe('demo routes', () => {
   });
 
   it('gets a random safe programming joke from get /', async() => {
-    return await request(app).get('/api/programmingjokes').then(res => {
+    return await request(app).get('/api/programmingjokes/random').then(res => {
       expect(res.body).toEqual(expect.any(Object));
     });
   });
