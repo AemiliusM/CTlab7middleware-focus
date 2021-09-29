@@ -14,23 +14,23 @@ describe('demo routes', () => {
     });
   });
 
-  //   it('posts a pun to /api//api/programmingjokes', async() => {
-  //     return await request(app)
-  //       .post('/api/programmingjokes')
-  //       .send({
-  //         category: 'Pun',
-  //         typeOf: 'twopart',
-  //         setup: 'What do you call a witch at the beach?',
-  //         delivery: 'A Sandwich.', })
-  //       .then(res => {
-  //         expect(res.body).toEqual({
-  //           id: '1',
-  //           category: 'Pun',
-  //           typeOf: 'twopart',
-  //           setup: 'What do you call a witch at the beach?',
-  //           delivery: 'A Sandwich.' });
-  //       });
-  //   });
+  it('posts a pun to /api//api/programmingjokes', async() => {
+    return await request(app)
+      .post('/api/programmingjokes')
+      .send({
+        category: 'Pun',
+        typeOf: 'twopart',
+        setup: 'What do you call a witch at the beach?',
+        delivery: 'A Sandwich.', })
+      .then(res => {
+        expect(res.body).toEqual({
+          id: '1',
+          category: 'Pun',
+          typeOf: 'twopart',
+          setup: 'What do you call a witch at the beach?',
+          delivery: 'A Sandwich.' });
+      });
+  });
 
   //   it('reads all jokes in /api/programmingjokes', async() => {
   //     await request(app).post('/api/programmingjokes')
