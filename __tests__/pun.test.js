@@ -18,76 +18,67 @@ describe('demo routes', () => {
     return await request(app)
       .post('/api/punnyjokes')
       .send({
-        category: 'Pun',
-        typeOf: 'twopart',
-        setup: 'What do you call a witch at the beach?',
-        delivery: 'A Sandwich.', })
+        category: "Pun",
+        typeOf: 'single',
+        joke: "I'm reading a book about anti-gravity. It's impossible to put down!" })
       .then(res => {
         expect(res.body).toEqual({
           id: '1',
-          category: 'Pun',
-          typeOf: 'twopart',
-          setup: 'What do you call a witch at the beach?',
-          delivery: 'A Sandwich.' });
+          category: "Pun",
+        typeOf: "single",
+        joke: "I'm reading a book about anti-gravity. It's impossible to put down!" });
       });
   });
 
   it('reads all jokes in /api/punnyjoke', async() => {
     await request(app).post('/api/punnyjokes')
       .send({
-        category: 'Pun',
-        typeOf: 'twopart',
-        setup: 'What do you call a witch at the beach?',
-        delivery: 'A Sandwich.' });
+        category: "Pun",
+        typeOf: "single",
+        joke: "I'm reading a book about anti-gravity. It's impossible to put down!" });
     return await request(app)
       .get('/api/punnyjokes/all').then(res => {
         expect(res.body).toEqual([{ 
           id: '1',
-          category: 'Pun',
-          typeOf: 'twopart',
-          setup: 'What do you call a witch at the beach?',
-          delivery: 'A Sandwich.' }]);
+          category: "Pun",
+        typeOf: "single",
+        joke: "I'm reading a book about anti-gravity. It's impossible to put down!" }]);
       });
   });
 
   it('updates a joke by id', async() => {
     await request(app).post('/api/punnyjokes')
       .send({
-        category: 'Pun',
-        typeOf: 'twopart',
-        setup: 'What do you call a witch at the beach?',
-        delivery: 'A Sandwich.' });
+        category: "Pun",
+        typeOf: "single",
+        joke: "I'm reading a book about anti-gravity. It's impossible to put down!" });
     return await request(app).patch('/api/punnyjokes/1')
       .send({
         id:'1',
-        category: 'Pun',
-        typeOf: 'twopart',
-        setup: 'Did you hear about the cheese factory that exploded in France?',
-        delivery: 'There was nothing but de brie.' 
+        category: "Pun",
+        typeOf: "single",
+        joke: "I'm trying to read a book about gravity but, It's impossible to pick up!" 
       }).then(res => {
         expect(res.body).toEqual(
           { id: '1',
-            category: 'Pun',
-            typeOf: 'twopart',
-            setup: 'Did you hear about the cheese factory that exploded in France?',
-            delivery: 'There was nothing but de brie.' });
+          category: "Pun",
+          typeOf: "single",
+          joke: "I'm trying to read a book about gravity but, It's impossible to pick up!"  });
       });
   });
       
   it('should delete a joke', async () => {
     await request(app).post('/api/punnyjokes')
       .send({
-        category: 'Pun',
-        typeOf: 'twopart',
-        setup: 'Did you hear about the cheese factory that exploded in France?',
-        delivery: 'There was nothing but de brie.' });
+        category: "Pun",
+        typeOf: "single",
+        joke: "I'm reading a book about anti-gravity. It's impossible to put down!"  });
     return request(app).delete('/api/punnyjokes/1').then(res => {
       expect(res.body).toEqual({
         id: '1',
-        category: 'Pun',
-        typeOf: 'twopart',
-        setup: 'Did you hear about the cheese factory that exploded in France?',
-        delivery: 'There was nothing but de brie.' });
+        category: "Pun",
+        typeOf: "single",
+        joke: "I'm reading a book about anti-gravity. It's impossible to put down!"  });
     });
   });
 });

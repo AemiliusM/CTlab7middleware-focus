@@ -14,21 +14,21 @@ describe('demo routes', () => {
     });
   });
 
-  it('posts a pun to /api//api/programmingjokes', async() => {
+  it('posts a pun to /api/programmingjokes', async() => {
     return await request(app)
       .post('/api/programmingjokes')
       .send({
-        category: 'Pun',
-        typeOf: 'twopart',
-        setup: 'What do you call a witch at the beach?',
-        delivery: 'A Sandwich.', })
+        category: 'Programming',
+        typeOf: 'single',
+        joke: '// This line doesnt actually do anything, but the code stops working when I delete it.', })
       .then(res => {
+        console.log(res.body);
         expect(res.body).toEqual({
           id: '1',
-          category: 'Pun',
-          typeOf: 'twopart',
-          setup: 'What do you call a witch at the beach?',
-          delivery: 'A Sandwich.' });
+          category: 'Programming',
+          typeOf: 'single',
+          joke: '// This line doesnt actually do anything, but the code stops working when I delete it.'
+        });
       });
   });
 
