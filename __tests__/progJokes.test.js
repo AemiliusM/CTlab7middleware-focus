@@ -63,29 +63,26 @@ describe('demo routes', () => {
       
     });
 
-  //   it('updates a joke by id', async() => {
-  //     await request(app).post('/api/programmingjokes')
-  //       .send({
-  //         category: 'Pun',
-  //         typeOf: 'twopart',
-  //         setup: 'What do you call a witch at the beach?',
-  //         delivery: 'A Sandwich.' });
-  //     return await request(app).patch('/api/programmingjokes/1')
-  //       .send({
-  //         id:'1',
-  //         category: 'Pun',
-  //         typeOf: 'twopart',
-  //         setup: 'Did you hear about the cheese factory that exploded in France?',
-  //         delivery: 'There was nothing but de brie.' 
-  //       }).then(res => {
-  //         expect(res.body).toEqual(
-  //           { id: '1',
-  //             category: 'Pun',
-  //             typeOf: 'twopart',
-  //             setup: 'Did you hear about the cheese factory that exploded in France?',
-  //             delivery: 'There was nothing but de brie.' });
-  //       });
-  //   });
+    it('updates a joke by id', async() => {
+      await request(app).post('/api/programmingjokes')
+        .send({
+          category: 'Programming',
+          typeOf: 'single',
+          joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' });
+      return await request(app).patch('/api/programmingjokes/1')
+        .send({
+          id:'1',
+          category: 'Programming',
+          typeOf: 'single',
+          joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some flowers."\n"He never returned."' 
+        }).then(res => {
+          expect(res.body).toEqual(
+            { id:'1',
+            category: 'Programming',
+            typeOf: 'single',
+            joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some flowers."\n"He never returned."' });
+        });
+    });
       
 //   it('should delete a joke', async () => {
 //     await request(app).post('/api/programmingjokes')
