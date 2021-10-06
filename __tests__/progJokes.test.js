@@ -20,7 +20,7 @@ describe('demo routes', () => {
       .send({
         category: 'Programming',
         typeOf: 'single',
-        joke: '// This line doesnt actually do anything, but the code stops working when I delete it.', })
+        joke: '// This line doesnt actually do anything, but the code stops working when I delete it.' })
       .then(res => {
         expect(res.body).toEqual({
           id: '1',
@@ -34,18 +34,16 @@ describe('demo routes', () => {
     it('reads all jokes in /api/programmingjokes', async() => {
       await request(app).post('/api/programmingjokes')
         .send({
-          category: 'Pun',
-          typeOf: 'twopart',
-          setup: 'What do you call a witch at the beach?',
-          delivery: 'A Sandwich.' });
+          category: 'Programming',
+        typeOf: 'single',
+        joke: '// This line doesnt actually do anything, but the code stops working when I delete it.' });
       return await request(app)
         .get('/api/programmingjokes/all').then(res => {
           expect(res.body).toEqual([{ 
             id: '1',
-            category: 'Pun',
-            typeOf: 'twopart',
-            setup: 'What do you call a witch at the beach?',
-            delivery: 'A Sandwich.' }]);
+            category: 'Programming',
+        typeOf: 'single',
+        joke: '// This line doesnt actually do anything, but the code stops working when I delete it.' }]);
         });
     });
 
