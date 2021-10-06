@@ -2,6 +2,9 @@ DROP TABLE IF EXISTS singlejokes;
 DROP TABLE IF EXISTS doublejokes;
 DROP TABLE IF EXISTS punnyjokes;
 DROP TABLE IF EXISTS programmingjokes;
+DROP TABLE IF EXISTS xmasjokes;
+
+
 CREATE TABLE singlejokes (
     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     category VARCHAR(512) NOT NULL,
@@ -31,4 +34,12 @@ CREATE TABLE programmingjokes (
     type_of VARCHAR(512) NOT NULL,
     joke VARCHAR(512)
 
+);
+
+CREATE TABLE xmasjokes (
+    id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    category VARCHAR(512) NOT NULL,
+    type_of VARCHAR(512) NOT NULL,
+    setup VARCHAR(512) NOT NULL,
+    delivery VARCHAR(512) NOT NULL
 )
