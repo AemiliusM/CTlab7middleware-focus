@@ -8,90 +8,89 @@ describe('demo routes', () => {
     return setup(pool);
   });
 
-  it('gets a random single safe joke from get /', async() => {
-    return await request(app).get('/api/singlejokes').then(res => {
+  it('gets a random safe programming joke from get /', async() => {
+    return await request(app).get('/api/programmingjokes/random').then(res => {
       expect(res.body).toEqual(expect.any(Object));
     });
   });
 
-  it('posts joke to /api/singlejoke', async() => {
+  it('posts a joke to /api/programmingjokes', async() => {
     return await request(app)
-      .post('/api/singlejokes')
+      .post('/api/programmingjokes')
       .send({
         category: 'Programming',
         typeOf: 'single',
-        joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' })
+        joke: '// This line doesnt actually do anything, but the code stops working when I delete it.' })
       .then(res => {
         expect(res.body).toEqual({
           id: '1',
           category: 'Programming',
           typeOf: 'single',
-          joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' });
+          joke: '// This line doesnt actually do anything, but the code stops working when I delete it.'
+        });
       });
   });
 
-  it('reads all jokes in /api/singlejoke', async() => {
-    await request(app).post('/api/singlejokes')
+  it('reads all jokes in /api/programmingjokes', async() => {
+    await request(app).post('/api/programmingjokes')
       .send({
         category: 'Programming',
         typeOf: 'single',
-        joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' });
+        joke: '// This line doesnt actually do anything, but the code stops working when I delete it.' });
     return await request(app)
-      .get('/api/singlejokes/all').then(res => {
-        expect(res.body).toEqual([{ id: '1',
+      .get('/api/programmingjokes/all').then(res => {
+        expect(res.body).toEqual([{ 
+          id: '1',
           category: 'Programming',
           typeOf: 'single',
-          joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' }]);
+          joke: '// This line doesnt actually do anything, but the code stops working when I delete it.' }]);
       });
   });
 
-  it('gets a joke by id', async() => {
-    await request(app).post('/api/singlejokes')
+  it('gets a  PROG joke by id', async() => {
+    await request(app).post('/api/programmingjokes')
       .send({
         category: 'Programming',
         typeOf: 'single',
         joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' });
-    return await request(app).get('/api/singlejokes/1').then(res => {
-      expect(res.body).toEqual([{
+    return await request(app).get('/api/programmingjokes/1').then(res => {
+      expect(res.body).toEqual({
         id: '1',
         category: 'Programming',
         typeOf: 'single',
-        joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' }])
+        joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' });
     });    
-    
+      
   });
 
   it('updates a joke by id', async() => {
-    await request(app).post('/api/singlejokes')
+    await request(app).post('/api/programmingjokes')
       .send({
         category: 'Programming',
         typeOf: 'single',
         joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' });
-    return await request(app).patch('/api/singlejokes/1')
+    return await request(app).patch('/api/programmingjokes/1')
       .send({
         id:'1',
         category: 'Programming',
         typeOf: 'single',
-        joke: 'HAHAHAHA'
+        joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some flowers."\n"He never returned."' 
       }).then(res => {
         expect(res.body).toEqual(
-          { id: '1',
+          { id:'1',
             category: 'Programming',
             typeOf: 'single',
-            joke: 'HAHAHAHA' }
-        );
+            joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some flowers."\n"He never returned."' });
       });
-      
-      
   });
-    
+      
   it('should delete a joke', async () => {
-    await request(app).post('/api/singlejokes')
+    await request(app).post('/api/programmingjokes')
       .send({
         category: 'Programming',
         typeOf: 'single',
         joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' });
-    return request(app).delete('/api/singlejokes/1').then(res => {
+    return request(app).delete('/api/programmingjokes/1').then(res => {
       expect(res.body).toEqual({
         id: '1',
         category: 'Programming',
@@ -99,11 +98,9 @@ describe('demo routes', () => {
         joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' });
     });
   });
-
-
-  afterAll(() => {
-    pool.end();
-  });
 });
 
 
+afterAll(() => {
+  pool.end();
+});
