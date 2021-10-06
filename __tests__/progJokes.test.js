@@ -31,23 +31,23 @@ describe('demo routes', () => {
       });
   });
 
-  //   it('reads all jokes in /api/programmingjokes', async() => {
-  //     await request(app).post('/api/programmingjokes')
-  //       .send({
-  //         category: 'Pun',
-  //         typeOf: 'twopart',
-  //         setup: 'What do you call a witch at the beach?',
-  //         delivery: 'A Sandwich.' });
-  //     return await request(app)
-  //       .get('/api/programmingjokes/all').then(res => {
-  //         expect(res.body).toEqual([{ 
-  //           id: '1',
-  //           category: 'Pun',
-  //           typeOf: 'twopart',
-  //           setup: 'What do you call a witch at the beach?',
-  //           delivery: 'A Sandwich.' }]);
-  //       });
-  //   });
+    it('reads all jokes in /api/programmingjokes', async() => {
+      await request(app).post('/api/programmingjokes')
+        .send({
+          category: 'Pun',
+          typeOf: 'twopart',
+          setup: 'What do you call a witch at the beach?',
+          delivery: 'A Sandwich.' });
+      return await request(app)
+        .get('/api/programmingjokes/all').then(res => {
+          expect(res.body).toEqual([{ 
+            id: '1',
+            category: 'Pun',
+            typeOf: 'twopart',
+            setup: 'What do you call a witch at the beach?',
+            delivery: 'A Sandwich.' }]);
+        });
+    });
 
   //   it('updates a joke by id', async() => {
   //     await request(app).post('/api/programmingjokes')

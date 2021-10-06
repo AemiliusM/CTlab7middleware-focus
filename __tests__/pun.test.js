@@ -46,6 +46,22 @@ describe('demo routes', () => {
       });
   });
 
+  it('gets a joke by id', async() => {
+    await request(app).post('/api/punnyjokes')
+      .send({
+        category: "Pun",
+        typeOf: "single",
+        joke: "I'm reading a book about anti-gravity. It's impossible to put down!" });
+    return await request(app).get('/api/punnyjokes/1').then(res => {
+      expect(res.body).toEqual({
+        id: '1',
+        category: "Pun",
+        typeOf: "single",
+        joke: "I'm reading a book about anti-gravity. It's impossible to put down!" })
+    });    
+    
+  });
+
   it('updates a joke by id', async() => {
     await request(app).post('/api/punnyjokes')
       .send({

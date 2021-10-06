@@ -82,7 +82,7 @@ describe('demo routes', () => {
         typeOf: 'twopart',
         setup: 'A web developer walks into a restaurant.',
         delivery: 'He immediately leaves in disgust as the restaurant was laid out in tables.' });
-    return await request(app).get('/api/singlejokes/1').then(res => {
+    return await request(app).get('/api/doublejokes/1').then(res => {
       expect(res.body).toEqual([{
         id: '1',
         category: 'Programming',
