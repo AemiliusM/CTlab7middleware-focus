@@ -53,29 +53,29 @@ describe('demo routes', () => {
 
   
 
-  // it('updates a joke by id', async() => {
-  //   await request(app).post('/api/xmasjokes')
-  //     .send({
-  //       category: 'Christmas',
-  //       type: 'twopart',
-  //       setup: 'What says Oh Oh Oh?',
-  //       delivery: 'Santa walking backwards!' });
-  //   return await request(app).patch('/api/xmasjokes/1')
-  //     .send({
-  //       id:'1',
-  //       category: 'Christmas',
-  //       type: 'twopart',
-  //       setup: 'What says Oh Oh Oh?',
-  //       delivery: 'Santa falling down stairs!' })
-  //     .then(res => {
-  //       expect(res.body).toEqual(
-  //         { id: '1',
-  //           category: 'Christmas',
-  //           type: 'twopart',
-  //           setup: 'What says Oh Oh Oh?',
-  //           delivery: 'Santa falling down stairs!' });
-  //     });
-  // });
+  it('updates a joke by id', async() => {
+    await request(app).post('/api/xmasjokes')
+      .send({
+        category: 'Christmas',
+        type: 'twopart',
+        setup: 'What says Oh Oh Oh?',
+        delivery: 'Santa walking backwards!' });
+    return await request(app).patch('/api/xmasjokes/1')
+      .send({
+        id:'1',
+        category: 'Christmas',
+        type: 'twopart',
+        setup: 'What says Oh Oh Oh?',
+        delivery: 'Santa falling down stairs!' })
+      .then(res => {
+        expect(res.body).toEqual(
+          { id: '1',
+            category: 'Christmas',
+            type: 'twopart',
+            setup: 'What says Oh Oh Oh?',
+            delivery: 'Santa falling down stairs!' });
+      });
+  });
       
   // it('gets a xmasjoke by id', async() => {
   //   await request(app).post('/api/xmasjokes')
