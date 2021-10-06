@@ -14,7 +14,7 @@ describe('demo routes', () => {
     });
   });
 
-  it('posts a pun to /api/programmingjokes', async() => {
+  it('posts a joke to /api/programmingjokes', async() => {
     return await request(app)
       .post('/api/programmingjokes')
       .send({
