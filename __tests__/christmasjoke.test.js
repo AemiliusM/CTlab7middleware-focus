@@ -20,14 +20,14 @@ describe('demo routes', () => {
       .post('/api/xmasjokes')
       .send({
         category: 'Christmas',
-        type: 'twopart',
+        typeOf: 'twopart',
         setup: 'What says Oh Oh Oh?',
         delivery: 'Santa walking backwards!' })
       .then(res => {
         expect(res.body).toEqual({
           id: '1',
           category: 'Christmas',
-          type: 'twopart',
+          typeOf: 'twopart',
           setup: 'What says Oh Oh Oh?',
           delivery: 'Santa walking backwards!' });
       });
