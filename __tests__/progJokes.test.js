@@ -22,7 +22,6 @@ describe('demo routes', () => {
         typeOf: 'single',
         joke: '// This line doesnt actually do anything, but the code stops working when I delete it.', })
       .then(res => {
-        console.log(res.body);
         expect(res.body).toEqual({
           id: '1',
           category: 'Programming',
