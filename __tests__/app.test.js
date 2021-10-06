@@ -45,6 +45,22 @@ describe('demo routes', () => {
       });
   });
 
+  it('gets a joke by id', async() => {
+    await request(app).post('/api/singlejokes')
+      .send({
+        category: 'Programming',
+        typeOf: 'single',
+        joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' });
+    return await request(app).get('/api/singlejokes/1').then(res => {
+      expect(res.body).toEqual({
+        id: '1',
+        category: 'Programming',
+        typeOf: 'single',
+        joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' })
+    });    
+    
+  });
+
   it('updates a joke by id', async() => {
     await request(app).post('/api/singlejokes')
       .send({
