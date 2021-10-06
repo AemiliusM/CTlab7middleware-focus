@@ -15,23 +15,23 @@ describe('demo routes', () => {
     });
   });
 
-  // it('posts joke to /api/xmasjokes', async() => {
-  //   return await request(app)
-  //     .post('/api/xmasjokes')
-  //     .send({
-  //       category: 'Christmas',
-  //       type: 'twopart',
-  //       setup: 'What says Oh Oh Oh?',
-  //       delivery: 'Santa walking backwards!' })
-  //     .then(res => {
-  //       expect(res.body).toEqual({
-  //         id: '1',
-  //         category: 'Christmas',
-  //         type: 'twopart',
-  //         setup: 'What says Oh Oh Oh?',
-  //         delivery: 'Santa walking backwards!' });
-  //     });
-  // });
+  it('posts joke to /api/xmasjokes', async() => {
+    return await request(app)
+      .post('/api/xmasjokes')
+      .send({
+        category: 'Christmas',
+        type: 'twopart',
+        setup: 'What says Oh Oh Oh?',
+        delivery: 'Santa walking backwards!' })
+      .then(res => {
+        expect(res.body).toEqual({
+          id: '1',
+          category: 'Christmas',
+          type: 'twopart',
+          setup: 'What says Oh Oh Oh?',
+          delivery: 'Santa walking backwards!' });
+      });
+  });
 
   // it('reads all jokes in /api/xmasjoke', async() => {
   //   await request(app).post('/api/xmasjokes')
