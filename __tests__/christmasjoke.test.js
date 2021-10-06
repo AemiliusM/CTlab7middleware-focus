@@ -33,23 +33,23 @@ describe('demo routes', () => {
       });
   });
 
-  // it('reads all jokes in /api/xmasjoke', async() => {
-  //   await request(app).post('/api/xmasjokes')
-  //     .send({
-  //       category: 'Christmas',
-  //       type: 'twopart',
-  //       setup: 'What says Oh Oh Oh?',
-  //       delivery: 'Santa walking backwards!' });
-  //   return await request(app)
-  //     .get('/api/xmasjokes/all').then(res => {
-  //       expect(res.body).toEqual([{ 
-  //         id: '1',
-  //         category: 'Christmas',
-  //         type: 'twopart',
-  //         setup: 'What says Oh Oh Oh?',
-  //         delivery: 'Santa walking backwards!' }]);
-  //     });
-  // });
+  it('reads all jokes in /api/xmasjoke', async() => {
+    await request(app).post('/api/xmasjokes')
+      .send({
+        category: 'Christmas',
+        type: 'twopart',
+        setup: 'What says Oh Oh Oh?',
+        delivery: 'Santa walking backwards!' });
+    return await request(app)
+      .get('/api/xmasjokes/all').then(res => {
+        expect(res.body).toEqual([{ 
+          id: '1',
+          category: 'Christmas',
+          type: 'twopart',
+          setup: 'What says Oh Oh Oh?',
+          delivery: 'Santa walking backwards!' }]);
+      });
+  });
 
   
 
