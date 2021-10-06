@@ -100,13 +100,14 @@ describe('demo routes', () => {
     await request(app).post('/api/xmasjokes')
       .send({
         category: 'Christmas',
-        type: 'twopart',
+        typeOf: 'twopart',
         setup: 'What says Oh Oh Oh?',
         delivery: 'Santa walking backwards!' });
     return request(app).delete('/api/xmasjokes/1').then(res => {
       expect(res.body).toEqual({
+        id: '1',
         category: 'Christmas',
-        type: 'twopart',
+        typeOf: 'twopart',
         setup: 'What says Oh Oh Oh?',
         delivery: 'Santa walking backwards!' });
     });
