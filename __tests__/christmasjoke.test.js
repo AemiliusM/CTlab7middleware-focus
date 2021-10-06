@@ -96,21 +96,21 @@ describe('demo routes', () => {
   });    
   
     
-  // it('should delete a joke', async () => {
-  //   await request(app).post('/api/xmasjokes')
-  //     .send({
-  //       category: 'Christmas',
-  //       type: 'twopart',
-  //       setup: 'What says Oh Oh Oh?',
-  //       delivery: 'Santa walking backwards!' });
-  //   return request(app).delete('/api/xmasjokes/1').then(res => {
-  //     expect(res.body).toEqual({
-  //       category: 'Christmas',
-  //       type: 'twopart',
-  //       setup: 'What says Oh Oh Oh?',
-  //       delivery: 'Santa walking backwards!' });
-  //   });
-  // });
+  it('should delete a joke', async () => {
+    await request(app).post('/api/xmasjokes')
+      .send({
+        category: 'Christmas',
+        type: 'twopart',
+        setup: 'What says Oh Oh Oh?',
+        delivery: 'Santa walking backwards!' });
+    return request(app).delete('/api/xmasjokes/1').then(res => {
+      expect(res.body).toEqual({
+        category: 'Christmas',
+        type: 'twopart',
+        setup: 'What says Oh Oh Oh?',
+        delivery: 'Santa walking backwards!' });
+    });
+  });
 
 
 });
