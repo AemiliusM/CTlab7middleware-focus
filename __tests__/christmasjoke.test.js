@@ -77,23 +77,23 @@ describe('demo routes', () => {
       });
   });
       
-  // it('gets a xmasjoke by id', async() => {
-  //   await request(app).post('/api/xmasjokes')
-  //     .send({
-  //       category: 'Christmas',
-  //       type: 'twopart',
-  //       setup: 'What says Oh Oh Oh?',
-  //       delivery: 'Santa walking backwards!' });
-  //   return await request(app).get('/api/xmasjokes/1').then(res => {
-  //     expect(res.body).toEqual([{
-  //       id: '1',
-  //       category: 'Christmas',
-  //       type: 'twopart',
-  //       setup: 'What says Oh Oh Oh?',
-  //       delivery: 'Santa walking backwards!' }]);
-  //   });    
+  it('gets a xmasjoke by id', async() => {
+    await request(app).post('/api/xmasjokes')
+      .send({
+        category: 'Christmas',
+        type: 'twopart',
+        setup: 'What says Oh Oh Oh?',
+        delivery: 'Santa walking backwards!' });
+    return await request(app).get('/api/xmasjokes/1').then(res => {
+      expect(res.body).toEqual([{
+        id: '1',
+        category: 'Christmas',
+        type: 'twopart',
+        setup: 'What says Oh Oh Oh?',
+        delivery: 'Santa walking backwards!' }]);
+    });    
     
-  // });    
+  });    
   
     
   // it('should delete a joke', async () => {
