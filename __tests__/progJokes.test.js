@@ -31,58 +31,58 @@ describe('demo routes', () => {
       });
   });
 
-    it('reads all jokes in /api/programmingjokes', async() => {
-      await request(app).post('/api/programmingjokes')
-        .send({
-          category: 'Programming',
+  it('reads all jokes in /api/programmingjokes', async() => {
+    await request(app).post('/api/programmingjokes')
+      .send({
+        category: 'Programming',
         typeOf: 'single',
         joke: '// This line doesnt actually do anything, but the code stops working when I delete it.' });
-      return await request(app)
-        .get('/api/programmingjokes/all').then(res => {
-          expect(res.body).toEqual([{ 
-            id: '1',
-            category: 'Programming',
-        typeOf: 'single',
-        joke: '// This line doesnt actually do anything, but the code stops working when I delete it.' }]);
-        });
-    });
-
-    it('gets a  PROG joke by id', async() => {
-      await request(app).post('/api/programmingjokes')
-        .send({
-          category: 'Programming',
-          typeOf: 'single',
-          joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' });
-      return await request(app).get('/api/programmingjokes/1').then(res => {
-        expect(res.body).toEqual({
+    return await request(app)
+      .get('/api/programmingjokes/all').then(res => {
+        expect(res.body).toEqual([{ 
           id: '1',
           category: 'Programming',
           typeOf: 'single',
-          joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' })
-      });    
-      
-    });
+          joke: '// This line doesnt actually do anything, but the code stops working when I delete it.' }]);
+      });
+  });
 
-    it('updates a joke by id', async() => {
-      await request(app).post('/api/programmingjokes')
-        .send({
-          category: 'Programming',
-          typeOf: 'single',
-          joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' });
-      return await request(app).patch('/api/programmingjokes/1')
-        .send({
-          id:'1',
-          category: 'Programming',
-          typeOf: 'single',
-          joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some flowers."\n"He never returned."' 
-        }).then(res => {
-          expect(res.body).toEqual(
-            { id:'1',
+  it('gets a  PROG joke by id', async() => {
+    await request(app).post('/api/programmingjokes')
+      .send({
+        category: 'Programming',
+        typeOf: 'single',
+        joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' });
+    return await request(app).get('/api/programmingjokes/1').then(res => {
+      expect(res.body).toEqual({
+        id: '1',
+        category: 'Programming',
+        typeOf: 'single',
+        joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' });
+    });    
+      
+  });
+
+  it('updates a joke by id', async() => {
+    await request(app).post('/api/programmingjokes')
+      .send({
+        category: 'Programming',
+        typeOf: 'single',
+        joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some milk."\n"He never returned."' });
+    return await request(app).patch('/api/programmingjokes/1')
+      .send({
+        id:'1',
+        category: 'Programming',
+        typeOf: 'single',
+        joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some flowers."\n"He never returned."' 
+      }).then(res => {
+        expect(res.body).toEqual(
+          { id:'1',
             category: 'Programming',
             typeOf: 'single',
             joke: '"Honey, go to the store and buy some eggs."\n"OK."\n"Oh and while you\'re there, get some flowers."\n"He never returned."' });
-        });
-    });
+      });
+  });
       
 //   it('should delete a joke', async () => {
 //     await request(app).post('/api/programmingjokes')
