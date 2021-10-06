@@ -57,21 +57,21 @@ describe('demo routes', () => {
     await request(app).post('/api/xmasjokes')
       .send({
         category: 'Christmas',
-        type: 'twopart',
+        typeOf: 'twopart',
         setup: 'What says Oh Oh Oh?',
         delivery: 'Santa walking backwards!' });
     return await request(app).patch('/api/xmasjokes/1')
       .send({
         id:'1',
         category: 'Christmas',
-        type: 'twopart',
+        typeOf: 'twopart',
         setup: 'What says Oh Oh Oh?',
         delivery: 'Santa falling down stairs!' })
       .then(res => {
         expect(res.body).toEqual(
           { id: '1',
             category: 'Christmas',
-            type: 'twopart',
+            typeOf: 'twopart',
             setup: 'What says Oh Oh Oh?',
             delivery: 'Santa falling down stairs!' });
       });
