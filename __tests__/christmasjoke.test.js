@@ -10,6 +10,7 @@ describe('demo routes', () => {
 
   it('gets a random safe xmas joke from get /', async() => {
     return await request(app).get('/api/xmasjokes/random').then(res => {
+      console.log(res.body);
       expect(res.body).toEqual(expect.any(Object));
     });
   });
